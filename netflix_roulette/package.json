@@ -1,0 +1,46 @@
+{
+  "name": "react-mentoring",
+  "version": "1.0.0",
+  "description": "This app searches for movies using Netflix's Roulette API and React",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szucsviktor/react-mentoring.git"
+  },
+  "keywords": [
+    "react",
+    "expressjs",
+    "git",
+    "node",
+    "webpack",
+    "babel"
+  ],
+  "author": "Viktor Szucs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/szucsviktor/react-mentoring/issues"
+  },
+  "homepage": "https://github.com/szucsviktor/react-mentoring#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "jest": "^21.0.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "redux": "^3.7.2",
+    "redux-form": "^7.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.5.6"
+  }
+}
