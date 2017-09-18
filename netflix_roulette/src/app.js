@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AppComponent from './components/app-container';
 
 ReactDOM.render(
-    <h1>Hello World!</h1>,
-    document.querySelector('#root')
+    <AppComponent />,
+    document.querySelector("#root")
 );
