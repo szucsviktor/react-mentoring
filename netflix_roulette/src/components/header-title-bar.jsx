@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default class HeaderTitleBar extends React.Component {
     constructor(props) {
@@ -7,21 +7,21 @@ export default class HeaderTitleBar extends React.Component {
 
     render() {
         let content;
-            if(this.props.detailedpage){
-                content = (
-                    <div>
-                        <span>netflixroulette</span>
-                        <a href="/">Search</a>
-                    </div>
-                )
-            } else {
-                content = (
-                    <div>
-                        <span>netflixroulette</span>
-                    </div>
-                )
-            }
-        return(
+        if (this.props.detailedpage) {
+            content = (
+                <div>
+                    <span>netflixroulette</span>
+                    <a href="/">Search</a>
+                </div>
+            )
+        } else {
+            content = (
+                <div>
+                    <span>netflixroulette</span>
+                </div>
+            )
+        }
+        return (
             <div>
                 {content}
             </div>

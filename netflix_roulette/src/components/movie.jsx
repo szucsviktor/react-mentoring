@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default class MovieItem extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class MovieItem extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div style={this.style}>
                 <div>
                     <img src={this.props.attributes.poster} alt=""/>

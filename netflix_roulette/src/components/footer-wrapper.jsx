@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 export default class FooterWrapper extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    render () {
+    render() {
         return (
             <div>
                 netflixroulette
