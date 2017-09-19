@@ -21,7 +21,7 @@ export default class AppComponent extends React.Component {
     render() {
         return (
             <div style={this.style}>
-                <HeaderWrapper result={resultFromNetflix} detailedpage={isDetailedPage}/>
+                <HeaderWrapper result={resultFromNetflix} detailedpage={isDetailedPage} itemnotfound={isItemNotFound}/>
                 <ResultWrapper result={resultFromNetflix} detailedpage={isDetailedPage} itemnotfound={isItemNotFound}/>
                 <FooterWrapper detailedpage={isDetailedPage}/>
             </div>

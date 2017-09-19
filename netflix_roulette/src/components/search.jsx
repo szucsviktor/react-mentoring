@@ -3,11 +3,15 @@ import React from "react";
 export default class Search extends React.Component {
     constructor(props) {
         super(props);
+        this.style = {};
+        this.style.formContainer = {
+            height: "200px"
+        };
     }
 
     render() {
         return (
-            <div>
+            <div style={this.style.formContainer}>
                 <form>
                     <label htmlFor="search-movie">
                         Find your movie

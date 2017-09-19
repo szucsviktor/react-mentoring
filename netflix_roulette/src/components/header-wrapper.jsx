@@ -24,7 +24,7 @@ export default class HeaderWrapper extends React.Component {
             <div>
                 <HeaderTitleBar detailedpage={this.props.detailedpage}/>
                 {content}
-                <HeaderResultBar detailedpage={this.props.detailedpage} attributes={this.props.detailedpage ? this.props.result[0] : this.props.result} />
+                <HeaderResultBar detailedpage={this.props.detailedpage} attributes={this.props.detailedpage ? this.props.result[0] : this.props.result} itemnotfound={this.props.itemnotfound} />
             </div>
         );
     }

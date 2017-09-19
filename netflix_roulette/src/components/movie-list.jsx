@@ -6,7 +6,9 @@ export default class MovieList extends React.Component {
         this.style = {
             display: "flex",
             justifyContent: "flex-start",
-            flexFlow: "row wrap"
+            flexFlow: "row wrap",
+            backgroundColor: "#fff",
+            minHeight: "400px"
         };
     }
 
