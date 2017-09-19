@@ -1,11 +1,12 @@
 import React from 'react';
-import Search from './search';
-import MovieList from './movie-list';
-import MovieDetails from './movie-details';
+
 import resultFromNetflix from '../result';
+import HeaderWrapper from './header-wrapper';
+import FooterWrapper from './footer-wrapper';
+import ResultWrapper from './result-wrapper';
 
-
-let isDetailedPage = /\item/.test(location.pathname);
+let isDetailedPage = /\item$/.test(location.pathname),
+    isItemNotFound = /\item-not-found$/.test(location.pathname);
 
 export default class AppComponent extends React.Component {
 
@@ -18,20 +19,12 @@ export default class AppComponent extends React.Component {
     }
 
     render () {
-        if(isDetailedPage){
-            return (
-                <div style={this.style}>
-                    <Search />
-                    <MovieDetails result={resultFromNetflix} />
-                </div>
-            );
-        } else {
-            return(
-                <div style={this.style}>
-                    <Search />
-                    <MovieList result={resultFromNetflix} />
-                </div>
-            );
-        }
+        return (
+            <div style={this.style}>
+                <HeaderWrapper result={resultFromNetflix} detailedpage={isDetailedPage} />
+                <ResultWrapper result={resultFromNetflix} detailedpage={isDetailedPage} itemnotfound={isItemNotFound} />
+                <FooterWrapper detailedpage={isDetailedPage} />
+            </div>
+        );
     }
 }

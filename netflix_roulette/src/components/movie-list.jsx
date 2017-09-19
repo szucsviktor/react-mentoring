@@ -5,23 +5,30 @@ export default class MovieList extends React.Component {
         super(props);
         this.style = {
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
+            justifyContent: "flex-start",
             flexFlow: "row wrap"
         };
     }
 
     render() {
+        let content;
+
+        if(this.props.itemnotfound){
+            content = (
+                <h1>No films found</h1>
+            )
+        } else {
+            content = (
+                this.props.result.map((movie) =>
+                    <MovieItem attributes={movie} />
+                )
+
+            )
+        }
+
         return(
             <div style={this.style}>
-                {this.props.result.map((movie) =>
-                    <MovieItem key={movie.show_id}
-                               title={movie.show_title}
-                               poster={movie.poster}
-                               year={movie.release_year}
-                               category={movie.category}
-                    />
-                )}
+                {content}
             </div>
         );
     }
