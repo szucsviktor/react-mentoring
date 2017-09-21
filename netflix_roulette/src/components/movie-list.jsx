@@ -4,11 +4,17 @@ export default class MovieList extends React.Component {
     constructor(props) {
         super(props);
         this.style = {
-            display: "flex",
-            justifyContent: "flex-start",
-            flexFlow: "row wrap",
-            backgroundColor: "#fff",
-            minHeight: "400px"
+            container: {
+                display: "flex",
+                justifyContent: "center",
+                flexFlow: "row wrap",
+                backgroundColor: "#fff",
+                minHeight: "400px",
+                alignItems: "flex-start"
+            },
+            movieItemContainer: {
+                // flex: "1 0 auto"
+            }
         };
     }
 
@@ -22,13 +28,15 @@ export default class MovieList extends React.Component {
         } else {
             content = (
                 this.props.result.map((movie) =>
-                    <MovieItem attributes={movie}/>
+                    <div style={this.style.movieItemContainer}>
+                        <MovieItem attributes={movie}/>
+                    </div>
                 )
             )
         }
 
         return (
-            <div style={this.style}>
+            <div style={this.style.container}>
                 {content}
             </div>
         );

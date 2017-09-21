@@ -27,8 +27,8 @@ export default class MovieDetails extends React.Component {
                 </div>
                 <div style={this.style.movieDetailsContainer}>
                     <div>{this.props.attributes.show_title}</div>
-                    <div>{this.props.attributes.category}</div>
                     <div>{this.props.attributes.rating}</div>
+                    <div>{this.props.attributes.category}</div>
                     <div>{this.props.attributes.release_year}</div>
                     <div>{this.props.attributes.runtime}</div>
                     <div>{this.props.attributes.summary}</div>
