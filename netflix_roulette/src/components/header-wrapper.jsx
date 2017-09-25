@@ -33,7 +33,11 @@ export default class HeaderWrapper extends React.Component {
                 <HeaderTitleBar detailedpage={this.props.detailedpage}/>
                 <Router>
                     <Switch>
-                        <Route path="/item:id" component={MovieDetails} />
+                        <Route path="/item"
+                            render={(props) => (
+                            <MovieDetails {...props} attributes={this.props.result[0]} />
+                            )}
+                        />
                         <Route path="/" component={Search} />
                     </Switch>
                 </Router>

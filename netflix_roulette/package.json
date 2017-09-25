@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/szucsviktor/react-mentoring#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.15.4",
     "jest": "^21.0.2",
     "react": "^15.6.1",
