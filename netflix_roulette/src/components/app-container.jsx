@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import resultFromNetflix from "../result";
 import HeaderWrapper from "./header-wrapper";
@@ -16,15 +17,19 @@ export default class AppComponent extends React.Component {
             width: "100%"
         };
 
+        this.state = {
+            result: resultFromNetflix
+        };
     }
 
     render() {
         return (
             <div style={this.style}>
-                <HeaderWrapper result={resultFromNetflix} detailedpage={isDetailedPage} itemnotfound={isItemNotFound}/>
-                <ResultWrapper result={resultFromNetflix} detailedpage={isDetailedPage} itemnotfound={isItemNotFound}/>
+                <HeaderWrapper result={this.state.result} detailedpage={isDetailedPage} itemnotfound={isItemNotFound}/>
+                <ResultWrapper result={this.state.result} detailedpage={isDetailedPage} itemnotfound={isItemNotFound}/>
                 <FooterWrapper detailedpage={isDetailedPage}/>
             </div>
+
         );
     }
 }
