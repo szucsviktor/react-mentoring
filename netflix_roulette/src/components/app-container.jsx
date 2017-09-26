@@ -18,18 +18,26 @@ export default class AppComponent extends React.Component {
         };
 
         this.state = {
-            result: resultFromNetflix
+            result: [],
+            updateResult: function (data) {
+                this.setState({result: data});
+            }
         };
     }
 
     render() {
         return (
-            <div style={this.style}>
-                <HeaderWrapper result={this.state.result} detailedpage={isDetailedPage} itemnotfound={isItemNotFound}/>
-                <ResultWrapper result={this.state.result} detailedpage={isDetailedPage} itemnotfound={isItemNotFound}/>
-                <FooterWrapper detailedpage={isDetailedPage}/>
-            </div>
-
+        <Router>
+            <Route path="*"
+                   render={(props) => (
+                    <div style={this.style}>
+                       <HeaderWrapper {...props} result={this.state.result} updateResult={this.state.updateResult} />
+                       <ResultWrapper {...props} result={this.state.result} updateResult={this.state.updateResult} />
+                       <FooterWrapper {...props} result={this.state.result} updateResult={this.state.updateResult} />
+                    </div>
+                   )}
+            />
+        </Router>
         );
     }
 }
