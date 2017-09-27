@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 export default class HeaderWrapper extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
     }
 
     render() {
@@ -19,10 +18,14 @@ export default class HeaderWrapper extends React.Component {
                     <Switch>
                         <Route path="/item"
                             render={(props) => (
-                            <MovieDetails {...props} attributes={this.props.result[0]} />
+                            <MovieDetails {...props} updateResult={this.props.updateResult} />
                             )}
                         />
-                        <Route path="/" component={Search} />
+                        <Route path="/"
+                               render={(props) => (
+                                   <Search {...props} updateResult={this.props.updateResult} />
+                               )}
+                        />
                     </Switch>
                 </Router>
                 <HeaderResultBar detailedpage={this.props.detailedpage} attributes={this.props.detailedpage ? this.props.result[0] : this.props.result} itemnotfound={this.props.itemnotfound} />

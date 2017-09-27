@@ -18,7 +18,7 @@ export default class Search extends React.Component {
             searchBy: "title"
         };
 
-        console.log(this.props);
+        console.log(this.props.updateResult);
 
         this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
@@ -32,10 +32,12 @@ export default class Search extends React.Component {
     }
 
     handleSearchByChange(e) {
+        e.preventDefault();
         this.setState({searchBy: e.target.value});
     }
 
-    submitForm() {
+    submitForm(e) {
+        e.preventDefault();
         this.searchMovie();
     }
 
@@ -46,16 +48,16 @@ export default class Search extends React.Component {
             axios.get(netflix_url, {
                 params: params
             }).then((result) => {
-                this.setState({movieList: result.data});
-            }).catch((error) => {
-                this.setState({movieList: []});
+                this.props.updateResult(result.data);
+            }).catch(() => {
+                this.props.updateResult([]);
             });
     }
 
     render() {
         return (
             <div style={this.style.formContainer}>
-                <form>
+                <form onSubmit={this.submitForm}>
                     <div>
                         <label htmlFor="search-movie">
                             Find your movie
@@ -71,10 +73,9 @@ export default class Search extends React.Component {
                     </div>
                     <div>
                         <div>
-                            <input type="button"
+                            <input type="submit"
                                    className=""
                                    value="Search"
-                                   onClick={this.submitForm}
                             />
                         </div>
                         <div>

@@ -20,7 +20,6 @@ export default class MovieDetails extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div style={this.style.container}>
                 <div style={this.style.posterContainer}>

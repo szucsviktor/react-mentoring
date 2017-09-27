@@ -5,12 +5,20 @@ import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 export default class ResultWrapper extends React.Component {
     constructor(props) {
         super(props);
+        console.log("This is result-wrapper component", this.props.result);
     }
 
     render() {
         return (
-            <MovieList result={this.props.detailedpage ? this.props.result.slice(1) : this.props.result}
-                       itemnotfound={this.props.itemnotfound}/>
+        <Router>
+            <Route path="/"
+               render={(props) => (
+                   <div>
+                    <MovieList {...props} result={this.props.result} />
+                   </div>
+               )}
+            />
+        </Router>
         );
 
     }

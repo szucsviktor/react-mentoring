@@ -21,7 +21,7 @@ export default class MovieList extends React.Component {
     render() {
         let content;
 
-        if (this.props.itemnotfound) {
+        if (this.props.result && this.props.result.length === 0) {
             content = (
                 <h1>No films found</h1>
             )
