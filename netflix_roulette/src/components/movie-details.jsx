@@ -17,25 +17,38 @@ export default class MovieDetails extends React.Component {
                 marginLeft: "5rem"
             }
         };
+
     }
 
     render() {
+        let movie = this.props.getMovie(this.props.match.params.movieId),
+            content;
+
+            if (movie) {
+                content = (
+                    <div style={this.style.container}>
+                        <div style={this.style.posterContainer}>
+                            <img src={movie.poster} alt=""/>
+                        </div>
+                        <div style={this.style.movieDetailsContainer}>
+                            <div>{movie.show_title}</div>
+                            <div>{movie.rating}</div>
+                            <div>{movie.category}</div>
+                            <div>{movie.release_year}</div>
+                            <div>{movie.runtime}</div>
+                            <div>{movie.summary}</div>
+                            <div>{movie.director}</div>
+                            <div>{movie.show_cast}</div>
+                        </div>
+                    </div>
+                )
+            } else {
+                content = (
+                    <div>###############</div>
+                )
+            }
         return (
-            <div style={this.style.container}>
-                <div style={this.style.posterContainer}>
-                    <img src={this.props.attributes.poster} alt=""/>
-                </div>
-                <div style={this.style.movieDetailsContainer}>
-                    <div>{this.props.attributes.show_title}</div>
-                    <div>{this.props.attributes.rating}</div>
-                    <div>{this.props.attributes.category}</div>
-                    <div>{this.props.attributes.release_year}</div>
-                    <div>{this.props.attributes.runtime}</div>
-                    <div>{this.props.attributes.summary}</div>
-                    <div>{this.props.attributes.director}</div>
-                    <div>{this.props.attributes.show_cast}</div>
-                </div>
-            </div>
+            {content}
         );
     }
 }

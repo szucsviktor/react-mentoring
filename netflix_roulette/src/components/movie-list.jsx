@@ -29,7 +29,7 @@ export default class MovieList extends React.Component {
             content = (
                 this.props.result.map((movie) =>
                     <div style={this.style.movieItemContainer}>
-                        <MovieItem attributes={movie}/>
+                        <MovieItem movie={movie}/>
                     </div>
                 )
             )

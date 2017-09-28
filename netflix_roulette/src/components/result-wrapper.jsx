@@ -20,6 +20,5 @@ export default class ResultWrapper extends React.Component {
             />
         </Router>
         );
-
     }
 }

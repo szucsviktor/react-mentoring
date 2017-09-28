@@ -11,6 +11,7 @@ export default class AppComponent extends React.Component {
         super(props);
 
         this.updateResult = this.updateResult.bind(this);
+        this.getMovie = this.getMovie.bind(this);
 
         this.style = {
             width: "100%"
@@ -33,13 +34,18 @@ export default class AppComponent extends React.Component {
             }
     }
 
+    getMovie(movieId){
+        let movie = this.state.result.filter(element => element.show_id === movieId)[0];
+        return movie;
+    }
+
     render() {
         return (
         <Router>
-            <Route path="*"
+            <Route path="/"
                    render={(props) => (
                     <div style={this.style}>
-                       <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} />
+                       <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
                        <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} />
                        <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} />
                     </div>
