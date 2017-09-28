@@ -5,12 +5,10 @@ import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 export default class ResultWrapper extends React.Component {
     constructor(props) {
         super(props);
-        console.log("This is result-wrapper component", this.props.result);
     }
 
     render() {
         return (
-        <Router>
             <Route path="/"
                render={(props) => (
                    <div>
@@ -18,7 +16,6 @@ export default class ResultWrapper extends React.Component {
                    </div>
                )}
             />
-        </Router>
         );
     }
 }

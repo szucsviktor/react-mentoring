@@ -21,7 +21,6 @@ export default class MovieItem extends React.Component {
     }
 
     render() {
-        console.log(this.props.movie);
         return (
             <div style={this.style.container}>
                 <div style={this.style.posterContainer}>

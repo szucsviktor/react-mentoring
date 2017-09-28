@@ -35,7 +35,11 @@ export default class AppComponent extends React.Component {
     }
 
     getMovie(movieId){
-        let movie = this.state.result.filter(element => element.show_id === movieId)[0];
+        let movie = this.state.result.filter((element) => {
+            console.log("is match???", (element.show_id === Math.floor(movieId)));
+            return (element.show_id === Math.floor(movieId))
+        })[0];
+        console.log("dfsdfmovie", movie);
         return movie;
     }
 
@@ -46,8 +50,8 @@ export default class AppComponent extends React.Component {
                    render={(props) => (
                     <div style={this.style}>
                        <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
-                       <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} />
-                       <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} />
+                       <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                       <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
                     </div>
                    )}
             />

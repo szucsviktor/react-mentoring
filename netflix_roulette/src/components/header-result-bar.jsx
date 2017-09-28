@@ -22,24 +22,18 @@ export default class HeaderResultBar extends React.Component {
     }
 
     render() {
-        let content;
-        if (this.props.detailedpage) {
-            content = (
+        console.log(this.props);
+        return (
+            <div>
+               <div style={this.style.resultBar}>
+                   <div style={this.style.directorContainer}>
+                       Film by
+                   </div>
+               </div>
+
                 <div style={this.style.resultBar}>
                     <div style={this.style.directorContainer}>
-                        Film by {this.props.attributes.director}
-                    </div>
-                </div>
-            )
-        } else if(this.props.itemnotfound) {
-            content = (
-                <div style={this.style.resultBar}></div>
-            )
-        } else {
-            content = (
-                <div style={this.style.resultBar}>
-                    <div style={this.style.directorContainer}>
-                        <div>{this.props.attributes.length} movies found</div>
+                        {/*<div>{this.props.result.length} movies found</div>*/}
                     </div>
                     <div style={this.style.sortContainer}>
                         <span>Sort by </span>
@@ -47,11 +41,6 @@ export default class HeaderResultBar extends React.Component {
                         <span>rating</span>
                     </div>
                 </div>
-            )
-        }
-        return (
-            <div>
-                {content}
             </div>
         );
     }

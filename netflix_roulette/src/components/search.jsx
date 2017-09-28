@@ -18,8 +18,6 @@ export default class Search extends React.Component {
             searchBy: "title"
         };
 
-        console.log(this.props.updateResult);
-
         this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
         this.handleSearchByChange = this.handleSearchByChange.bind(this);
