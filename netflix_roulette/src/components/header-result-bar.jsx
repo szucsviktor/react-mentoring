@@ -22,7 +22,7 @@ export default class HeaderResultBar extends React.Component {
     }
 
     render() {
-        console.log(this.props);
+        console.log("HeaderResultBar this.props.result", this.props.result);
         return (
             <div>
                <div style={this.style.resultBar}>

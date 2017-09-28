@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 
 export default class HeaderTitleBar extends React.Component {
     constructor(props) {
@@ -21,25 +22,24 @@ export default class HeaderTitleBar extends React.Component {
     }
 
     render() {
-        let content;
-        if (this.props.detailedpage) {
-            content = (
-                <div style={this.style.container}>
-                    <span style={this.style.title}>netflixroulette</span>
-                    <a style={this.style.searchButton} href="/">Search</a>
-                </div>
-            )
-        } else {
-            content = (
-                <div style={this.style.container}>
-                    <span>netflixroulette</span>
-                </div>
-            )
-        }
         return (
-            <div>
-                {content}
-            </div>
+            <Switch>
+                <Route path="/item/:movieId"
+                       render={(props) =>
+                            <div style={this.style.container}>
+                                <span style={this.style.title}>netflixroulette Search</span>
+                                <Link style={this.style.searchButton} to="/">Search</Link>
+                            </div>
+                       }
+                />
+                <Route path="/"
+                    render={(props) =>
+                    <div style={this.style.container}>
+                        <span>netflixroulette No Search</span>
+                    </div>
+                    }
+                />
+            </Switch>
         );
     }
 }

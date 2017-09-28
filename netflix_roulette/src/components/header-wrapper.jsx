@@ -13,18 +13,20 @@ export default class HeaderWrapper extends React.Component {
     render() {
         return (
             <div>
-                <Route path="/" component={HeaderTitleBar} />
-                <Route path="/item/:movieId"
-                    render={props =>
-                        <MovieDetails {...props} updateResult={this.props.updateResult} getMovie={this.props.getMovie} />
-                    }
-                />
-                <Route exact path="/"
-                       render={props =>
-                           <Search {...props} updateResult={this.props.updateResult} />
-                       }
-                />
-                <Route path="/" component={HeaderResultBar} />
+                <HeaderTitleBar />
+                <Switch>
+                    <Route path="/item/:movieId"
+                        render={props =>
+                            <MovieDetails {...props} updateResult={this.props.updateResult} getMovie={this.props.getMovie} />
+                        }
+                    />
+                    <Route path="/"
+                           render={props =>
+                               <Search {...props} updateResult={this.props.updateResult} />
+                           }
+                    />
+                </Switch>
+                <HeaderResultBar />
             </div>
         );
     }

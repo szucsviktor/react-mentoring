@@ -21,11 +21,11 @@ export default class MovieDetails extends React.Component {
     }
 
     render() {
-        console.log("props", this.props);
-        console.log("Movie details|movieId", this.props.match.params.movieId);
+        console.log("MovieDetails props", this.props);
+        console.log("MovieDetails movieId", this.props.match.params.movieId);
+        console.log("MovieDetails getMovie", this.props.getMovie);
         let movie = this.props.getMovie(this.props.match.params.movieId),
             content;
-            console.log("Movie details|movie", movie);
             if (movie) {
                 content = (
                     <div style={this.style.container}>
@@ -46,12 +46,13 @@ export default class MovieDetails extends React.Component {
                 )
             } else {
                 content = (
-                    <div>###############</div>
+                    <div>Movie details are not found!</div>
                 )
             }
         return (
-            // {content}
-            <h1></h1>
+            <div>
+            {content}
+            </div>
         );
     }
 }
