@@ -15,15 +15,20 @@ export default class HeaderWrapper extends React.Component {
             <div>
                 <HeaderTitleBar />
                 <Switch>
+                    <Route exact path="/search/:searchBy/:searchQuery"
+                           render={props =>
+                               <Search {...props} updateResult={this.props.updateResult} />
+                           }
+                    />
+                    <Route exact path="/"
+                           render={props =>
+                               <Search {...props} updateResult={this.props.updateResult} />
+                           }
+                    />
                     <Route path="/item/:movieId"
                         render={props =>
                             <MovieDetails {...props} updateResult={this.props.updateResult} getMovie={this.props.getMovie} />
                         }
-                    />
-                    <Route path="/"
-                           render={props =>
-                               <Search {...props} updateResult={this.props.updateResult} />
-                           }
                     />
                 </Switch>
                 <HeaderResultBar />

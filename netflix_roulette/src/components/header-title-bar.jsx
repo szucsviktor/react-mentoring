@@ -27,7 +27,7 @@ export default class HeaderTitleBar extends React.Component {
                 <Route path="/item/:movieId"
                        render={(props) =>
                             <div style={this.style.container}>
-                                <span style={this.style.title}>netflixroulette Search</span>
+                                <span style={this.style.title}>netflixroulette</span>
                                 <Link style={this.style.searchButton} to="/">Search</Link>
                             </div>
                        }
@@ -35,7 +35,7 @@ export default class HeaderTitleBar extends React.Component {
                 <Route path="/"
                     render={(props) =>
                     <div style={this.style.container}>
-                        <span>netflixroulette No Search</span>
+                        <span>netflixroulette</span>
                     </div>
                     }
                 />

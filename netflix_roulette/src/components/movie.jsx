@@ -24,7 +24,7 @@ export default class MovieItem extends React.Component {
         return (
             <div style={this.style.container}>
                 <div style={this.style.posterContainer}>
-                    <Link to={{ pathname: `/item/${this.props.movie.show_id}`}}>
+                    <Link to={{ pathname: `/item/${this.props.movie.show_title}`}}>
                         <img src={this.props.movie.poster} alt=""/>
                     </Link>
                 </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 
 import HeaderWrapper from "./header-wrapper";
 import FooterWrapper from "./footer-wrapper";
@@ -36,25 +36,35 @@ export default class AppComponent extends React.Component {
 
     getMovie(movieId){
         let movie = this.state.result.filter((element) => {
-            console.log("is match???", (element.show_id === Math.floor(movieId)));
-            return (element.show_id === Math.floor(movieId))
+            return (element.show_title === movieId)
         })[0];
-        console.log("dfsdfmovie", movie);
         return movie;
     }
 
     render() {
         return (
+
         <Router>
-            <Route path="/"
-                   render={(props) => (
-                    <div style={this.style}>
-                       <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
-                       <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
-                       <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
-                    </div>
-                   )}
-            />
+            <Switch>
+                <Route path="/item/:movieId"
+                       render={(props) => (
+                           <div style={this.style}>
+                               <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                               <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                               <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                           </div>
+                       )}
+                />
+                <Route path="/"
+                       render={(props) => (
+                        <div style={this.style}>
+                           <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                           <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                           <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                        </div>
+                       )}
+                />
+            </Switch>
         </Router>
         );
     }

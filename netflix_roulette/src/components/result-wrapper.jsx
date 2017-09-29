@@ -9,27 +9,26 @@ export default class ResultWrapper extends React.Component {
     }
 
     removeItemFromMovieList(movieId) {
-        return this.props.result.filter(element => element.show_id !== Math.floor(movieId));
+        return this.props.result.filter(element => element.show_title !== movieId);
     }
 
     render() {
-        console.log("###", this.props.match.params.movieId);
         return (
             <Switch>
-            <Route path="/item/:movieId"
+                <Route path="/item/:movieId"
+                       render={(props) => (
+                          <div>
+                            <MovieList {...props} result={this.removeItemFromMovieList(this.props.match.params.movieId)} />
+                          </div>
+                       )}
+                />
+                <Route path="/"
                    render={(props) => (
-                      <div>
-                        <MovieList {...props} result={this.removeItemFromMovieList(this.props.match.params.movieId)} />
-                      </div>
+                       <div>
+                        <MovieList {...props} result={this.props.result} />
+                       </div>
                    )}
-            />
-            <Route path="/"
-               render={(props) => (
-                   <div>
-                    <MovieList {...props} result={this.props.result} />
-                   </div>
-               )}
-            />
+                />
             </Switch>
         );
     }

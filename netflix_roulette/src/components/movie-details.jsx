@@ -21,9 +21,6 @@ export default class MovieDetails extends React.Component {
     }
 
     render() {
-        console.log("MovieDetails props", this.props);
-        console.log("MovieDetails movieId", this.props.match.params.movieId);
-        console.log("MovieDetails getMovie", this.props.getMovie);
         let movie = this.props.getMovie(this.props.match.params.movieId),
             content;
             if (movie) {

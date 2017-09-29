@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 
 const netflix_url = "https://netflixroulette.net/api/api.php";
 
@@ -14,8 +14,9 @@ export default class Search extends React.Component {
         };
 
         this.state = {
-            searchFieldValue: "",
-            searchBy: "title"
+            searchFieldValue: this.props.match.params.searchQuery || "",
+            searchBy: this.props.match.params.searchBy || "title",
+            fireRedirect: false
         };
 
         this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
@@ -30,19 +31,18 @@ export default class Search extends React.Component {
     }
 
     handleSearchByChange(e) {
-        e.preventDefault();
         this.setState({searchBy: e.target.value});
     }
 
     submitForm(e) {
         e.preventDefault();
-        this.searchMovie();
+        this.searchMovie(this.state.searchBy, this.state.searchFieldValue);
+        this.setState({fireRedirect: true});
     }
 
-    searchMovie() {
+    searchMovie(searchBy, searchValue) {
         let params = {};
-            params[this.state.searchBy] = this.state.searchFieldValue;
-
+            params[searchBy] = searchValue;
             axios.get(netflix_url, {
                 params: params
             }).then((result) => {
@@ -53,6 +53,14 @@ export default class Search extends React.Component {
     }
 
     render() {
+        const { fireRedirect } = this.state,
+              { from } = this.props.location.state || '/';
+
+        if(this.props.match.params.searchQuery && !this.state.fireRedirect){
+            this.searchMovie(this.state.searchBy,this.props.match.params.searchQuery);
+            this.setState({fireRedirect: true});
+        }
+
         return (
             <div style={this.style.formContainer}>
                 <form onSubmit={this.submitForm}>
@@ -71,6 +79,7 @@ export default class Search extends React.Component {
                     </div>
                     <div>
                         <div>
+
                             <input type="submit"
                                    className=""
                                    value="Search"
@@ -96,6 +105,9 @@ export default class Search extends React.Component {
                         </div>
                     </div>
                 </form>
+                {fireRedirect && (
+                    <Redirect to={`/search/${this.state.searchBy}/${this.state.searchFieldValue}`} />
+                )}
             </div>
         );
     }
