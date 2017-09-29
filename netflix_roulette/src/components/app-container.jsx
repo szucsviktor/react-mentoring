@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 
 import HeaderWrapper from "./header-wrapper";
@@ -12,6 +13,7 @@ export default class AppComponent extends React.Component {
 
         this.updateResult = this.updateResult.bind(this);
         this.getMovie = this.getMovie.bind(this);
+        this.searchMovie = this.searchMovie.bind(this);
 
         this.style = {
             width: "100%"
@@ -41,6 +43,19 @@ export default class AppComponent extends React.Component {
         return movie;
     }
 
+    searchMovie(searchBy, searchValue) {
+        const netflix_url = "https://netflixroulette.net/api/api.php";
+        let params = {};
+        params[searchBy] = searchValue;
+        axios.get(netflix_url, {
+            params: params
+        }).then((result) => {
+            this.updateResult(result.data);
+        }).catch(() => {
+            this.updateResult([]);
+        });
+    }
+
     render() {
         return (
 
@@ -49,18 +64,18 @@ export default class AppComponent extends React.Component {
                 <Route path="/item/:movieId"
                        render={(props) => (
                            <div style={this.style}>
-                               <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
-                               <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
-                               <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                               <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} searchMovie={this.searchMovie} />
+                               <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} searchMovie={this.searchMovie} />
+                               <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} searchMovie={this.searchMovie} />
                            </div>
                        )}
                 />
                 <Route path="/"
                        render={(props) => (
                         <div style={this.style}>
-                           <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
-                           <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
-                           <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} />
+                           <HeaderWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} searchMovie={this.searchMovie} />
+                           <ResultWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} searchMovie={this.searchMovie} />
+                           <FooterWrapper {...props} result={this.state.result} updateResult={this.updateResult} getMovie={this.getMovie} searchMovie={this.searchMovie} />
                         </div>
                        )}
                 />

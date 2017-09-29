@@ -1,8 +1,8 @@
 import React from "react";
-import axios from "axios";
+
 import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 
-const netflix_url = "https://netflixroulette.net/api/api.php";
+
 
 export default class Search extends React.Component {
     constructor(props) {
@@ -22,7 +22,6 @@ export default class Search extends React.Component {
         this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
         this.handleSearchByChange = this.handleSearchByChange.bind(this);
-        this.searchMovie = this.searchMovie.bind(this);
     }
 
     handleSeachFieldChange(e) {
@@ -36,20 +35,8 @@ export default class Search extends React.Component {
 
     submitForm(e) {
         e.preventDefault();
-        this.searchMovie(this.state.searchBy, this.state.searchFieldValue);
+        this.props.searchMovie(this.state.searchBy, this.state.searchFieldValue);
         this.setState({fireRedirect: true});
-    }
-
-    searchMovie(searchBy, searchValue) {
-        let params = {};
-            params[searchBy] = searchValue;
-            axios.get(netflix_url, {
-                params: params
-            }).then((result) => {
-                this.props.updateResult(result.data);
-            }).catch(() => {
-                this.props.updateResult([]);
-            });
     }
 
     render() {
@@ -57,7 +44,7 @@ export default class Search extends React.Component {
               { from } = this.props.location.state || '/';
 
         if(this.props.match.params.searchQuery && !this.state.fireRedirect){
-            this.searchMovie(this.state.searchBy,this.props.match.params.searchQuery);
+            this.props.searchMovie(this.state.searchBy,this.props.match.params.searchQuery);
             this.setState({fireRedirect: true});
         }
 

@@ -9,7 +9,7 @@ export default class MovieList extends React.Component {
                 justifyContent: "center",
                 flexFlow: "row wrap",
                 backgroundColor: "#fff",
-                minHeight: "400px",
+                // minHeight: "400px",
                 alignItems: "flex-start"
             },
             movieItemContainer: {
