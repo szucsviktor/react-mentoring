@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 
 export default class HeaderResultBar extends React.Component {
     constructor(props) {
@@ -22,25 +22,53 @@ export default class HeaderResultBar extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-               <div style={this.style.resultBar}>
-                   <div style={this.style.directorContainer}>
-                       Film by
-                   </div>
-               </div>
+       let movie = this.props.getMovie(this.props.match.params.movieId),
+           movieNumber = this.props.movieNumber || 0,
+           content;
+            if (movie) {
+                content = (
+                    <div>
+                        <div style={this.style.resultBar}>
+                            <div style={this.style.directorContainer}>
+                                Films by {movie.director}
+                            </div>
+                        </div>
+                    </div>
+                )
+            } else {
+                content = (
+                    <div>Movie director has not been found</div>
+                )
+            }
 
-                <div style={this.style.resultBar}>
-                    <div style={this.style.directorContainer}>
-                        {/*<div>{this.props.result.length} movies found</div>*/}
-                    </div>
-                    <div style={this.style.sortContainer}>
-                        <span>Sort by </span>
-                        <span>release date </span>
-                        <span>rating</span>
-                    </div>
-                </div>
-            </div>
+        return (
+            <Switch>
+                <Route path="/item/:movieId"
+                       render={props =>
+                       <div>
+                           {content}
+                       </div>
+
+                   }
+                />
+                <Route path="/search/:searchBy/:searchQuery"
+                       render={props =>
+                           <div>
+                               {/*<div style={this.style.resultBar}>*/}
+                                   {/*<div style={this.style.directorContainer}>*/}
+                                       {/*/!*<div>{this.props.result.length} movies found</div>*!/*/}
+                                   {/*</div>*/}
+                                   {/*<div style={this.style.sortContainer}>*/}
+                                       {/*<span>Sort by </span>*/}
+                                       {/*<span>release date </span>*/}
+                                       {/*<span>rating</span>*/}
+                                   {/*</div>*/}
+                               {/*</div>*/}
+                               <h1>search query, {movieNumber}</h1>
+                           </div>
+                       }
+                />
+            </Switch>
         );
     }
 }

@@ -15,7 +15,6 @@ export default class HeaderWrapper extends React.Component {
     }
 
     render() {
-        console.log("props", this.props);
         if (this.props.result.length === 0 && this.props.match.params.movieId && !this.state.movieSearch) {
             this.props.searchMovie("title", this.props.match.params.movieId);
             this.setState({movieSearch: true});
@@ -26,21 +25,29 @@ export default class HeaderWrapper extends React.Component {
                 <Switch>
                     <Route exact path="/search/:searchBy/:searchQuery"
                            render={props =>
-                               <Search {...props} searchMovie={this.props.searchMovie} />
+                               <div>
+                                   <Search {...props} searchMovie={this.props.searchMovie} />
+                                   <HeaderResultBar {...props} getMovie={this.props.getMovie} movieNumber={this.props.result.length} />
+                               </div>
                            }
                     />
                     <Route exact path="/"
                            render={props =>
-                               <Search {...props} searchMovie={this.props.searchMovie} />
+                               <div>
+                                   <Search {...props} searchMovie={this.props.searchMovie} />
+                                   <HeaderResultBar {...props} getMovie={this.props.getMovie}  />
+                               </div>
                            }
                     />
                     <Route path="/item/:movieId"
                         render={props =>
-                            <MovieDetails {...props} searchMovie={this.props.searchMovie} getMovie={this.props.getMovie} />
+                            <div>
+                                <MovieDetails {...props} searchMovie={this.props.searchMovie} getMovie={this.props.getMovie} />
+                                <HeaderResultBar {...props} getMovie={this.props.getMovie} />
+                            </div>
                         }
                     />
                 </Switch>
-                <HeaderResultBar />
             </div>
         );
     }
