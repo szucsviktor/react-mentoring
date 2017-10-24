@@ -2,15 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
-import AppComponent from "./components/app-container";
-import AppContainer from "./components/appContainer";
-import movieApp from "./reducers";
+import movieApp from './reducers/index';
+import App from './components/appContainer';
 
-let store = createStore();
+let store = createStore(movieApp);
 
 ReactDOM.render(
     <Provider store={store}>
-        //<AppComponent />
         <App />
     </Provider>,
     document.querySelector("#root")
