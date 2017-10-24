@@ -13,8 +13,7 @@ const movies = (state=[], action) => {
 
 const sorter = (state = "TITLE", action) => {
     switch (action.type) {
-        case:
-            "SORT_BY",
+        case "SORT_BY":
             return action.filter;
         default:
             return state;
