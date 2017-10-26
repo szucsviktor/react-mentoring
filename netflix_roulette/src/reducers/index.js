@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const movies = (state=[], action) => {
     switch (action.type) {
-        case "UPDATE_MOVIELIST":
+        case "RECEIVE_MOVIE":
             return [
                 ...state
             ];
