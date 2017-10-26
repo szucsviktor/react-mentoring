@@ -28,16 +28,9 @@ class App extends React.Component {
     }
 
 
-    // search() {
-    //     if (!this.input.value) {
-    //         return;
-    //     }
-    //     this.props.onSearchMovie(this.input.value); // comes from mapDispatchToProps
-    // }
-
     render() {
         let input;
-        console.log(this.props);
+        console.log("#App Component props: ", this.props);
         return (
             <div style={this.style.formContainer}>
                 <form
