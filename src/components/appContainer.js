@@ -30,7 +30,6 @@ class App extends React.Component {
 
     render() {
         let input;
-        console.log("#App Component props: ", this.props);
         return (
             <div style={this.style.formContainer}>
                 <form
@@ -51,7 +50,6 @@ class App extends React.Component {
                                ref = {node => {
                                    input = node;
                                }}
-                            // onChange={this.handleSeachFieldChange}
                         />
                     </div>
                     <div>
@@ -68,16 +66,12 @@ class App extends React.Component {
                                    id="search-by-title"
                                    name="search-mode"
                                    value="title"
-                                // checked={this.state.searchBy === "title"}
-                                // onChange={this.handleSearchByChange}
                             />
                             <label htmlFor="search-by-director">Director</label>
                             <input type="radio"
                                    id="search-by-director"
                                    name="search-mode"
                                    value="director"
-                                // checked={this.state.searchBy === "director"}
-                                // onChange={this.handleSearchByChange}
                             />
                         </div>
                     </div>
@@ -87,6 +81,6 @@ class App extends React.Component {
     }
 }
 
-App = connect(mapStateToProps, mapDispatchToProps)(App);
+//App = connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

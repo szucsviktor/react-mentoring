@@ -6,8 +6,14 @@ import App from "./components/appContainer";
 import thunkMiddleware from 'redux-thunk';
 import movieApp from "./reducers";
 
+let initialState = {
+    movies: [],
+    filter: "TITLE"
+};
+
 let store = createStore(
     movieApp,
+    initialState,
     applyMiddleware(thunkMiddleware)
 );
 
