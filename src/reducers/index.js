@@ -3,8 +3,8 @@ import { combineReducers } from 'redux';
 const movies = (state = [], action) => {
     switch (action.type) {
         case "RECEIVE_MOVIE":
-            console.log("state from reducer is", [...state, action.movieList]);
-            return [...state, action.movieList];
+            console.log("state from reducer is", action.movieList);
+            return action.movieList;
         default:
             return state;
     }
