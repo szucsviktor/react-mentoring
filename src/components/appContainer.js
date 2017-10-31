@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-class App extends React.Component {
+export class App extends React.Component {
     constructor(props) {
         super(props);
         this.style = {
@@ -81,6 +81,4 @@ class App extends React.Component {
     }
 }
 
-//App = connect(mapStateToProps, mapDispatchToProps)(App);
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);;
